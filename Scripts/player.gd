@@ -43,6 +43,9 @@ func _on_body_entered(body: Node) -> void:
 	if !is_transitioning:
 		if "Goal" in body.get_groups():
 			complete_level()
+			LevelManager.timer.set_paused(true)
+		if "Start" in body.get_groups():
+			LevelManager.timer.set_paused(false)
 		if "Hazard" in body.get_groups():
 			print("You crashed into da floor")
 			crash_sequence()

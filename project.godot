@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 LevelManager="*res://Scripts/level.gd"
 SoundManager="*res://Scripts/sound_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -30,6 +34,7 @@ version_control/autoload_on_startup=true
 Goal="The Landing Pad or Finish Spot"
 Hazard="Whatever the Floor Is"
 UI=""
+Start=""
 
 [input]
 

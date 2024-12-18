@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjkdq7e6n87xe"]
+
+[ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_j1n3f"]
+[ext_resource type="FontFile" uid="uid://dfgyynjbtviqx" path="res://Assets/Fonts/good timing bd.otf" id="1_wotju"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_34bgd"]
+font = ExtResource("1_wotju")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pinr"]
+font = ExtResource("1_wotju")
+font_size = 48
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_j1n3f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.829
+anchor_bottom = 15.832
+offset_right = -3.16003
+offset_bottom = 11.72
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.184314, 0.219608, 0.286275, 0.705882)
+
+[node name="CongratsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 14.167
+anchor_top = 7.704
+anchor_right = 14.167
+anchor_bottom = 7.704
+offset_left = -386.68
+offset_top = -187.16
+offset_right = 373.32
+offset_bottom = -109.16
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congrats on Finishing!"
+label_settings = SubResource("LabelSettings_34bgd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YourTimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 14.167
+anchor_top = 7.704
+anchor_right = 14.167
+anchor_bottom = 7.704
+offset_left = -386.68
+offset_top = -108.66
+offset_right = 373.32
+offset_bottom = -30.66
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your Time: 7777 seconds"
+label_settings = SubResource("LabelSettings_5pinr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 380.0
+offset_top = 291.0
+offset_right = 693.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="PlayAgainButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wotju")
+theme_override_font_sizes/font_size = 36
+text = "Play Again"
+
+[node name="ReturnToMainMenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wotju")
+theme_override_font_sizes/font_size = 36
+text = "Return To Menu"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wotju")
+theme_override_font_sizes/font_size = 36
+text = "Quit Button"
+
+[connection signal="pressed" from="VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnToMainMenuButton" to="." method="_on_return_to_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

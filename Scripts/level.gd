@@ -3,8 +3,6 @@ extends Node3D
 var timer: Timer = Timer.new() # Timer to set up for the time tracking
 var total_time: int = 0
 
-@export var is_final_level: bool = false
-
 var levels: Array[PackedScene] = [
 	preload("res://Scenes/Levels/level.tscn"),
 	preload("res://Scenes/Levels/level02.tscn"),
@@ -18,11 +16,19 @@ func _ready() -> void:
 	timer.start(1)
 
 func load_next_level():
-	var landing_pad = get_tree().get_nodes_in_group("Goal")
-	get_tree().change_scene_to_packed(levels[landing_pad[0].next_scene_index])
+	var landing_pad = get_tree().get_first_node_in_group("Goal")
+	if !landing_pad.get_is_final_level():
+		get_tree().change_scene_to_packed(levels[landing_pad.next_scene_index])
+	else:
+		var UI = get_tree().get_first_node_in_group("UI")
+		UI.toggle_win_screen(true)
 
 func reset_level():
 	get_tree().reload_current_scene()
+
+func reset_game():
+	get_tree().change_scene_to_packed(levels[0])
+	total_time = 0
 
 func increment_time():
 	total_time += 1
