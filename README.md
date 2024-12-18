@@ -1,0 +1,2 @@
+This is my first project from the GDTV 3D Game Development with Godot course.
+I already finished the 2D course prior to this and learned many things that this introductory game does not do so I implemented a few extra things and did things a little differently to ensure I got some good practice and made a game in a similar way but with my own models and an actual game loop with a simple menu system
