@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bel4iowb2p8ui"]
+[gd_scene load_steps=10 format=3 uid="uid://bel4iowb2p8ui"]
 
 [ext_resource type="PackedScene" uid="uid://djh05iggqrifm" path="res://Scenes/landing_pad.tscn" id="1_ckbiy"]
 [ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_fcxgv"]
+[ext_resource type="PackedScene" uid="uid://dwf15q2j57ypc" path="res://Scenes/ui.tscn" id="1_mcgjm"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_ngdr0"]
 [ext_resource type="PackedScene" uid="uid://vfi888unao8x" path="res://Scenes/player.tscn" id="2_ki884"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
@@ -21,6 +23,9 @@ glow_enabled = true
 albedo_color = Color(0, 0.416295, 0.603525, 1)
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_ngdr0")
+
+[node name="UI" parent="." instance=ExtResource("1_mcgjm")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5td8v")

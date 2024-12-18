@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwf15q2j57ypc"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_g8cu3"]
+[ext_resource type="FontFile" uid="uid://dfgyynjbtviqx" path="res://Assets/Fonts/good timing bd.otf" id="2_jmtgo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cs81"]
+font = ExtResource("2_jmtgo")
+font_size = 48
+
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_g8cu3")
+
+[node name="TimeLabel" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 31.0
+offset_right = 87.0
+offset_bottom = 54.0
+text = "Time: 7777"
+label_settings = SubResource("LabelSettings_8cs81")

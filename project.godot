@@ -29,6 +29,7 @@ version_control/autoload_on_startup=true
 
 Goal="The Landing Pad or Finish Spot"
 Hazard="Whatever the Floor Is"
+UI=""
 
 [input]
 
