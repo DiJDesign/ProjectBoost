@@ -14,4 +14,5 @@ func update_time_label(time: int):
 
 func toggle_win_screen(should_show: bool):
 	win_screen.visible = should_show
+	time_label.visible = false
 	win_screen.set_time_label_text()

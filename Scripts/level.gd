@@ -7,7 +7,8 @@ var levels: Array[PackedScene] = [
 	preload("res://Scenes/Levels/level.tscn"),
 	preload("res://Scenes/Levels/level02.tscn"),
 	preload("res://Scenes/Levels/level03.tscn"),
-	preload("res://Scenes/Levels/level04.tscn")
+	preload("res://Scenes/Levels/level04.tscn"),
+	preload("res://Scenes/start_menu.tscn")
 ]
 
 func _ready() -> void:
@@ -33,3 +34,6 @@ func reset_game():
 func increment_time():
 	total_time += 1
 	print(total_time)
+
+func return_to_start_menu():
+	get_tree().change_scene_to_packed(levels[4])

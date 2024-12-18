@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bel4iowb2p8ui"]
+[gd_scene load_steps=10 format=3 uid="uid://bel4iowb2p8ui"]
 
 [ext_resource type="PackedScene" uid="uid://djh05iggqrifm" path="res://Scenes/landing_pad.tscn" id="1_ckbiy"]
 [ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_fcxgv"]
 [ext_resource type="PackedScene" uid="uid://dwf15q2j57ypc" path="res://Scenes/ui.tscn" id="1_mcgjm"]
 [ext_resource type="PackedScene" uid="uid://vfi888unao8x" path="res://Scenes/player.tscn" id="2_ki884"]
+[ext_resource type="PackedScene" uid="uid://bf4c0fj8ibyhi" path="res://Scenes/Rocks/rock_pillar.tscn" id="5_4e5wj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,8 +46,37 @@ next_scene_index = 1
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 11.425, 24.485)
 
-[node name="RockFloor" parent="." instance=ExtResource("1_fcxgv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_ki884")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, 4.63515, -4.99945)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="RockFloor" parent="World" instance=ExtResource("1_fcxgv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
+
+[node name="RockPillar" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -43.3209, 0, 0)
+
+[node name="RockPillar2" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 46.6052, 0, 0)
+
+[node name="RockPillar3" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(0.0261103, -7.99996, 0, 7.99996, 0.0261103, 0, 0, 0, 8, 27.3515, 40.4246, 0)
+
+[node name="BackWall01" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(2.82475, 4.62086, -2.58233, -1.96439, 3.63306, 4.35225, 4.91548, -1.20355, 3.22328, -43.3209, 0, -34.0046)
+
+[node name="BackWall02" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(1.72567, -2.87833, -3.70639, 2.28975, 3.9635, -2.01191, 4.09623, -1.00296, 2.68606, 5.86362, 0.149906, -34.0046)
+
+[node name="BackWall03" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(0.496728, -4.956, -0.437359, 2.82815, 0.642882, -4.07287, 4.09326, 0.157238, 2.86714, 5.86362, 22.6197, -28.6461)
+
+[node name="BackWall04" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(1.91849, -3.86441, -2.527, 2.13649, 3.16885, -3.22394, 4.09326, 0.157238, 2.86714, 37.6005, 4.96143, -28.6461)
+
+[node name="BackWall05" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, 60.0835, 36.8296, -55.2488)
+
+[node name="BackWall06" parent="World" instance=ExtResource("5_4e5wj")]
+transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, -46.4921, 36.8296, -55.2488)

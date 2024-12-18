@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://db0dd1jp54eyr"]
+[gd_scene load_steps=14 format=3 uid="uid://db0dd1jp54eyr"]
 
 [ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_4c6lm"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_618cd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbosvyej6tppd" path="res://Scenes/Rocks/rock_01.tscn" id="3_hb1bj"]
 [ext_resource type="PackedScene" uid="uid://c6l66wsi8tcwc" path="res://Scenes/Rocks/rock_02.tscn" id="4_88ka5"]
 [ext_resource type="PackedScene" uid="uid://equc3kvellv5" path="res://Scenes/moving_hazard.tscn" id="5_yug04"]
+[ext_resource type="PackedScene" uid="uid://bf4c0fj8ibyhi" path="res://Scenes/Rocks/rock_pillar.tscn" id="9_ghnig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,18 +51,53 @@ is_final_level = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 11.425, 24.485)
 
-[node name="RockFloor" parent="." instance=ExtResource("1_4c6lm")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
-
 [node name="Player" parent="." instance=ExtResource("2_b0mmt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, 4.50206, -4.99945)
 
-[node name="Rock012" parent="." instance=ExtResource("3_hb1bj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -2.06283, -2.8129)
+[node name="World" type="Node3D" parent="."]
 
-[node name="Rock02" parent="." instance=ExtResource("4_88ka5")]
+[node name="RockFloor" parent="World" instance=ExtResource("1_4c6lm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
+
+[node name="RockPillar" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -43.3209, 0, 0)
+
+[node name="RockPillar2" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 46.6052, 0, 0)
+
+[node name="RockPillar3" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(0.0261103, -7.99996, 0, 7.99996, 0.0261103, 0, 0, 0, 8, 27.3515, 40.4246, 0)
+
+[node name="MovingHazard" parent="World" instance=ExtResource("5_yug04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80518, 3.84846, -4.21935)
+destination = Vector3(0, 16, 0)
+duration = 3.0
+
+[node name="MovingHazard2" parent="World" instance=ExtResource("5_yug04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.732, 3.84846, -4.21935)
+destination = Vector3(0, 16, 0)
+duration = 3.0
+
+[node name="Rock02" parent="World" instance=ExtResource("4_88ka5")]
 transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, -2.85555, 23.6985, -2.8129)
 
-[node name="MovingHazard" parent="." instance=ExtResource("5_yug04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80518, 16.4803, -4.21935)
-duration = 1.0
+[node name="Rock012" parent="World" instance=ExtResource("3_hb1bj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -2.06283, -2.8129)
+
+[node name="BackWall01" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(1.18143, 5.86959, 0.390006, -3.23145, 0.315166, 5.04563, 4.91548, -1.20355, 3.22328, -43.3209, 0, -34.0046)
+
+[node name="BackWall02" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(2.86257, 1.1644, -3.93063, 0.162924, 4.75797, 1.52814, 4.09623, -1.00296, 2.68606, 5.86362, 0.149906, -34.0046)
+
+[node name="BackWall03" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(-1.04765, -4.56657, 1.74611, 2.6735, -2.03021, -3.70549, 4.09326, 0.157238, 2.86714, -8.32083, 22.6197, -28.6461)
+
+[node name="BackWall04" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(1.91849, -3.86441, -2.527, 2.13649, 3.16885, -3.22394, 4.09326, 0.157238, 2.86714, 37.6005, 4.96143, -28.6461)
+
+[node name="BackWall05" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, 60.0835, 36.8296, -55.2488)
+
+[node name="BackWall06" parent="World" instance=ExtResource("9_ghnig")]
+transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, -46.4921, 36.8296, -55.2488)
