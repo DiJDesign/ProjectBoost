@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbosvyej6tppd"]
+
+[ext_resource type="PackedScene" uid="uid://0pi2xw0enlo7" path="res://Assets/Rock01.glb" id="1_x0dg6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8723c"]
+points = PackedVector3Array(2.76871, 2.67329, -0.158103, -0.772792, -0.787664, -0.316474, -0.138114, 2.11673, -1.80291, 1.74254, -0.238005, -1.65233, 0.800288, 3.05393, 0.775998, 1.35292, -0.652992, 0.71913, 1.74547, 3.85968, -1.26193, -0.344025, 2.79237, -0.628341, -0.454031, -0.496655, 0.856221, -0.0760359, -0.889387, -1.58378, 1.58684, 1.88613, -2.13009, 2.67855, 0.239534, -0.474044, 1.74006, 2.9023, 0.858813, 2.74456, 2.19059, -1.17352, -0.951423, 0.249154, -1.13157, 1.99201, -0.739885, -0.631502, 2.14253, 3.9439, -0.23558, 2.6415, 0.726125, 0.136998, 0.162584, -1.04808, 0.320694, 0.17474, 0.318712, -2.03767, 0.567657, 3.51469, -1.17435, -0.611042, 2.03965, -0.395691, 1.18987, 0.791569, 1.00451, 0.798055, 3.62476, -0.15711, -0.0648967, 0.784962, 0.94046, -0.374516, 2.82198, -1.09977, -0.951423, -0.413614, 0.110477, 0.878759, 3.35908, -1.56337, 1.42746, 0.077378, -1.96624, 2.50618, 3.19591, -1.01668, 2.19023, 2.10784, -1.78483, 2.51295, 0.32487, -1.09647)
+
+[node name="Rock012" instance=ExtResource("1_x0dg6")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Rock01" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08083, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rock01" index="0" groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08083, 0, 0)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rock01/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08083, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_8723c")

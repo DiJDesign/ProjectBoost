@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://4s5o2dx2f3l2"]
+
+[ext_resource type="PackedScene" uid="uid://bnniaqh15ko8g" path="res://Assets/RockFloor.glb" id="1_u8eh3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kifp6"]
+points = PackedVector3Array(2.97369, 1.90652, -13.4528, 27.9266, 2.73834, 3.18687, 18.7732, -2.25373, -2.6358, -16.9959, 2.73834, -0.971833, -21.1556, -1.42077, -8.45848, 7.95697, -2.25373, 9.01199, 11.2826, 3.57073, 6.51481, 19.602, 3.57073, -6.79451, 12.1167, -1.42077, -11.7864, 30.4286, 0.243444, -4.29977, -21.9896, -2.25373, 3.18687, -7.01371, 1.07413, 11.5092, 27.9266, -0.588949, 4.85084, -11.1734, -2.25373, -10.1224, -14.4991, 2.73834, -7.62772, 19.602, 2.73834, 8.17878, 21.27, 1.90652, -10.9557, -22.8236, -0.588949, 4.02008, -15.3331, 1.07413, 9.01199, -8.67654, 0.243444, -12.6196, 28.7606, 2.73834, -4.29977, -13.665, -2.25373, 9.84275, -22.8236, 0.243444, -5.13054, 25.4349, 3.57073, 2.35611, -13.665, 1.90652, -10.9557, 27.0978, -1.42077, 2.35611, 23.7721, -1.42077, -5.96374, 12.1167, 0.243444, -13.4528, 8.78578, 2.73834, -11.7864, 13.5587, 1.78421, 9.53443, 24.6009, 1.07413, -9.29169, -20.3268, 1.90652, -1.8026)
+
+[node name="RockFloor2" instance=ExtResource("1_u8eh3")]
+
+[node name="RockFloor" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67951, 0.719661, -3.19819)
+
+[node name="FloorBody" type="StaticBody3D" parent="RockFloor" index="0" groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.67951, -0.719661, 3.19819)
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RockFloor/FloorBody" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67951, 0.719661, -3.19819)
+shape = SubResource("ConvexPolygonShape3D_kifp6")

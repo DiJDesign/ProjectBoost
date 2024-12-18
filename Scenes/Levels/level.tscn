@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bel4iowb2p8ui"]
+
+[ext_resource type="PackedScene" uid="uid://djh05iggqrifm" path="res://Scenes/landing_pad.tscn" id="1_ckbiy"]
+[ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_fcxgv"]
+[ext_resource type="PackedScene" uid="uid://vfi888unao8x" path="res://Scenes/player.tscn" id="2_ki884"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_kubsv"]
+sky_material = SubResource("ProceduralSkyMaterial_q7rte")
+
+[sub_resource type="Environment" id="Environment_5td8v"]
+background_mode = 2
+sky = SubResource("Sky_kubsv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16hjo"]
+albedo_color = Color(0, 0.416295, 0.603525, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5td8v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, -1.01623, -4.99945)
+use_collision = true
+collision_layer = 8
+size = Vector3(8, 5, 8)
+material = SubResource("StandardMaterial3D_16hjo")
+
+[node name="LandingPad" parent="." instance=ExtResource("1_ckbiy")]
+next_scene_index = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 11.425, 24.485)
+
+[node name="RockFloor" parent="." instance=ExtResource("1_fcxgv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_ki884")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, 4.63515, -4.99945)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://djh05iggqrifm"]
+
+[ext_resource type="Script" path="res://Scripts/landing_pad.gd" id="1_2426r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdxu4"]
+albedo_color = Color(0.00703007, 0.322023, 0, 1)
+
+[node name="LandingPad" type="CSGBox3D" groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5288, 0.667577, -5.08198)
+use_collision = true
+collision_layer = 8
+size = Vector3(8, 5, 8)
+material = SubResource("StandardMaterial3D_mdxu4")
+script = ExtResource("1_2426r")
