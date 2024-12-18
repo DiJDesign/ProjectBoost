@@ -1,42 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://db0dd1jp54eyr"]
+[gd_scene load_steps=8 format=3 uid="uid://d2nip6rjobqnj"]
 
-[ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_4c6lm"]
-[ext_resource type="Script" path="res://Scripts/level.gd" id="1_618cd"]
 [ext_resource type="PackedScene" uid="uid://djh05iggqrifm" path="res://Scenes/landing_pad.tscn" id="1_c6xvo"]
 [ext_resource type="PackedScene" uid="uid://dwf15q2j57ypc" path="res://Scenes/ui.tscn" id="1_enlxp"]
 [ext_resource type="PackedScene" uid="uid://vfi888unao8x" path="res://Scenes/player.tscn" id="2_b0mmt"]
 [ext_resource type="PackedScene" uid="uid://dbosvyej6tppd" path="res://Scenes/Rocks/rock_01.tscn" id="3_hb1bj"]
-[ext_resource type="PackedScene" uid="uid://c6l66wsi8tcwc" path="res://Scenes/Rocks/rock_02.tscn" id="4_88ka5"]
-[ext_resource type="PackedScene" uid="uid://equc3kvellv5" path="res://Scenes/moving_hazard.tscn" id="5_yug04"]
-[ext_resource type="PackedScene" uid="uid://bf4c0fj8ibyhi" path="res://Scenes/Rocks/rock_pillar.tscn" id="9_ghnig"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_kubsv"]
-sky_material = SubResource("ProceduralSkyMaterial_q7rte")
-
-[sub_resource type="Environment" id="Environment_5td8v"]
-background_mode = 2
-sky = SubResource("Sky_kubsv")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://ciqan3ewmoqhg" path="res://Scenes/world.tscn" id="5_e4qh3"]
+[ext_resource type="PackedScene" uid="uid://equc3kvellv5" path="res://Scenes/moving_hazard.tscn" id="6_twv5e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16hjo"]
 albedo_color = Color(0, 0.416295, 0.603525, 1)
 
 [node name="Level" type="Node3D"]
-script = ExtResource("1_618cd")
 
 [node name="UI" parent="." instance=ExtResource("1_enlxp")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5td8v")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
 
 [node name="LaunchPad" type="CSGBox3D" parent="." groups=["Start"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, -1.04345, -4.99945)
@@ -47,6 +23,7 @@ material = SubResource("StandardMaterial3D_16hjo")
 
 [node name="LandingPad" parent="." instance=ExtResource("1_c6xvo")]
 is_final_level = true
+next_scene_index = 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 11.425, 24.485)
@@ -54,50 +31,20 @@ transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 
 [node name="Player" parent="." instance=ExtResource("2_b0mmt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, 4.50206, -4.99945)
 
-[node name="World" type="Node3D" parent="."]
+[node name="World" parent="." instance=ExtResource("5_e4qh3")]
 
-[node name="RockFloor" parent="World" instance=ExtResource("1_4c6lm")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
+[node name="Rock014" parent="World" instance=ExtResource("3_hb1bj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -2.98345)
 
-[node name="RockPillar" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -43.3209, 0, 0)
+[node name="Rock015" parent="World" instance=ExtResource("3_hb1bj")]
+transform = Transform3D(2.62543, 1.45159, 0, -1.45159, 2.62543, 0, 0, 0, 3, 0, 21.2962, -2.98345)
 
-[node name="RockPillar2" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 46.6052, 0, 0)
-
-[node name="RockPillar3" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(0.0261103, -7.99996, 0, 7.99996, 0.0261103, 0, 0, 0, 8, 27.3515, 40.4246, 0)
-
-[node name="MovingHazard" parent="World" instance=ExtResource("5_yug04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80518, 3.84846, -4.21935)
+[node name="MovingHazard" parent="World" instance=ExtResource("6_twv5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 3, -2.98345)
 destination = Vector3(0, 16, 0)
 duration = 3.0
 
-[node name="MovingHazard2" parent="World" instance=ExtResource("5_yug04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.732, 3.84846, -4.21935)
+[node name="MovingHazard2" parent="World" instance=ExtResource("6_twv5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3712, 3, -2.98345)
 destination = Vector3(0, 16, 0)
 duration = 3.0
-
-[node name="Rock02" parent="World" instance=ExtResource("4_88ka5")]
-transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, -2.85555, 23.6985, -2.8129)
-
-[node name="Rock012" parent="World" instance=ExtResource("3_hb1bj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -2.06283, -2.8129)
-
-[node name="BackWall01" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(1.18143, 5.86959, 0.390006, -3.23145, 0.315166, 5.04563, 4.91548, -1.20355, 3.22328, -43.3209, 0, -34.0046)
-
-[node name="BackWall02" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(2.86257, 1.1644, -3.93063, 0.162924, 4.75797, 1.52814, 4.09623, -1.00296, 2.68606, 5.86362, 0.149906, -34.0046)
-
-[node name="BackWall03" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(-1.04765, -4.56657, 1.74611, 2.6735, -2.03021, -3.70549, 4.09326, 0.157238, 2.86714, -8.32083, 22.6197, -28.6461)
-
-[node name="BackWall04" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(1.91849, -3.86441, -2.527, 2.13649, 3.16885, -3.22394, 4.09326, 0.157238, 2.86714, 37.6005, 4.96143, -28.6461)
-
-[node name="BackWall05" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, 60.0835, 36.8296, -55.2488)
-
-[node name="BackWall06" parent="World" instance=ExtResource("9_ghnig")]
-transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, -46.4921, 36.8296, -55.2488)

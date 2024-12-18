@@ -6,7 +6,7 @@ extends CanvasLayer
 func _ready() -> void:
 	update_time_label(LevelManager.total_time)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_time_label(LevelManager.total_time)
 
 func update_time_label(time: int):

@@ -1,25 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://be4jy8jvsfe0y"]
+[gd_scene load_steps=7 format=3 uid="uid://be4jy8jvsfe0y"]
 
-[ext_resource type="PackedScene" uid="uid://4s5o2dx2f3l2" path="res://Scenes/Rocks/rock_floor.tscn" id="1_bigkp"]
 [ext_resource type="PackedScene" uid="uid://djh05iggqrifm" path="res://Scenes/landing_pad.tscn" id="1_icxyp"]
 [ext_resource type="PackedScene" uid="uid://dwf15q2j57ypc" path="res://Scenes/ui.tscn" id="1_k1byi"]
 [ext_resource type="PackedScene" uid="uid://vfi888unao8x" path="res://Scenes/player.tscn" id="2_kqjna"]
 [ext_resource type="PackedScene" uid="uid://dbosvyej6tppd" path="res://Scenes/Rocks/rock_01.tscn" id="3_qiv8h"]
-[ext_resource type="PackedScene" uid="uid://c6l66wsi8tcwc" path="res://Scenes/Rocks/rock_02.tscn" id="4_s4y75"]
-[ext_resource type="PackedScene" uid="uid://bf4c0fj8ibyhi" path="res://Scenes/Rocks/rock_pillar.tscn" id="7_1u8gg"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q7rte"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_kubsv"]
-sky_material = SubResource("ProceduralSkyMaterial_q7rte")
-
-[sub_resource type="Environment" id="Environment_5td8v"]
-background_mode = 2
-sky = SubResource("Sky_kubsv")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://ciqan3ewmoqhg" path="res://Scenes/world.tscn" id="4_l0nf5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16hjo"]
 albedo_color = Color(0, 0.416295, 0.603525, 1)
@@ -27,13 +12,6 @@ albedo_color = Color(0, 0.416295, 0.603525, 1)
 [node name="Level" type="Node3D"]
 
 [node name="UI" parent="." instance=ExtResource("1_k1byi")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5td8v")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
 
 [node name="LaunchPad" type="CSGBox3D" parent="." groups=["Start"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, -1.04345, -4.99945)
@@ -51,46 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 
 [node name="Player" parent="." instance=ExtResource("2_kqjna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5928, 4.50206, -4.99945)
 
-[node name="World" type="Node3D" parent="."]
+[node name="World" parent="." instance=ExtResource("4_l0nf5")]
 
-[node name="RockFloor" parent="World" instance=ExtResource("1_bigkp")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -7.28343, 0)
+[node name="Rock014" parent="World" instance=ExtResource("3_qiv8h")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -2.27928)
 
-[node name="RockPillar" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -43.3209, 0, 0)
-
-[node name="RockPillar2" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 46.6052, 0, 0)
-
-[node name="RockPillar3" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(0.0261103, -7.99996, 0, 7.99996, 0.0261103, 0, 0, 0, 8, 27.3515, 40.4246, 0)
-
-[node name="Rock02" parent="World" instance=ExtResource("4_s4y75")]
-transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, -2.85555, 25.0099, -3.02895)
-
-[node name="Rock012" parent="World" instance=ExtResource("3_qiv8h")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2, -3.02895)
-
-[node name="BackWall01" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(1.37606, 5.8395, 0.0819573, -3.15349, 0.672092, 5.06002, 4.91548, -1.20355, 3.22328, -43.3209, 0, -34.0046)
-
-[node name="BackWall02" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(1.72567, -2.87833, -3.70639, 2.28975, 3.9635, -2.01191, 4.09623, -1.00296, 2.68606, 35.2857, 0.149906, -34.0046)
-
-[node name="BackWall03" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(2.54123, -2.52282, -3.48963, 1.33691, 4.31401, -2.14523, 4.09326, 0.157238, 2.86714, 5.86362, 22.6197, -28.6461)
-
-[node name="BackWall04" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(0.355096, -4.98189, -0.233738, 2.8494, 0.394972, -4.08961, 4.09326, 0.157238, 2.86713, 37.6005, 4.96143, -28.6461)
-
-[node name="BackWall05" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, 60.0835, 36.8296, -55.2488)
-
-[node name="BackWall06" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(-0.120965, -2.23204, -2.00084, 2.81534, -0.772126, 0.69114, -1.02918, -1.84981, 2.12579, -10.3479, 36.8296, -55.2488)
-
-[node name="BackWall07" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(0.972341, 2.6602, -0.988894, 2.81534, -0.772126, 0.69114, 0.358339, -1.15203, -2.74671, -38.6576, 36.8296, -55.2488)
-
-[node name="BackWall08" parent="World" instance=ExtResource("7_1u8gg")]
-transform = Transform3D(1.62057, 4.43366, -1.64816, 4.69224, -1.28688, 1.1519, 0.597232, -1.92005, -4.57785, -51.1772, 29.9946, -55.2488)
+[node name="Rock015" parent="World" instance=ExtResource("3_qiv8h")]
+transform = Transform3D(2.62543, 1.45159, 0, -1.45159, 2.62543, 0, 0, 0, 3, 0, 21.2962, -2.27928)
